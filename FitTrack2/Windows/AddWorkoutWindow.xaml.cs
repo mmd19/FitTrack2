@@ -23,9 +23,11 @@ namespace FitTrack2.Windows
     /// </summary>
     public partial class AddWorkoutWindow : Window
     {
+
+        //Lista för lagring av träningspass
         public List<Workout> workouts { get; set; }
         
-
+        //Konstruktor
         public AddWorkoutWindow(List<Workout> workouts)
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace FitTrack2.Windows
             Type();
         }
 
+        //Metod för att kunna fylla i Combobox med två alternativ
         public void Type()
         {
             List<string> type = new List<string>
@@ -42,17 +45,19 @@ namespace FitTrack2.Windows
             TypeComboBox.ItemsSource = type;
         }
 
-
+        //Hanterar knapp tryck
         private void Addbtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                //Hämtar och omvandlar inmatad data
                 DateTime date = DateTime.Parse(DatetxtBox.Text);
                 string type = TypeComboBox.Text;
                 TimeSpan duration = TimeSpan.Parse(DurationtxtBox.Text);
                 int caloriesBurned = int.Parse(CaloriesBurnedtxtBox.Text);
                 string notes = NotestxtBox.Text;
 
+                //Säkerställer att alla fält är ifyllda
                 if (string.IsNullOrEmpty(DatetxtBox.Text) ||
                     string.IsNullOrEmpty(TypeComboBox.Text) ||
                     string.IsNullOrEmpty(DurationtxtBox.Text) ||
@@ -61,6 +66,8 @@ namespace FitTrack2.Windows
                 {
                     MessageBox.Show("Please, fill in all fields", "Message");
                 }
+
+                //Lägger till träningspass beroende på typ
                 else if (type == "Cardio")
                 {
                     int distance = int.Parse(DistancetxtBox.Text);
@@ -76,6 +83,8 @@ namespace FitTrack2.Windows
                     this.Close();
                 }
             }
+
+            //Fångar upp fel
             catch
             {
                 MessageBox.Show("Invalid input", "Message");
