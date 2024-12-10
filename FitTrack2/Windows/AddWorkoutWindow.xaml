@@ -1,0 +1,118 @@
+﻿<Window x:Class="FitTrack2.Windows.AddWorkoutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitTrack2.Windows"
+        mc:Ignorable="d"
+        Title="AddWorkoutWindow" Height="450" Width="800" Background="LightCoral">
+    <Grid>
+
+        <Label x:Name="AddWorkoutLabel"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               FontSize="20"
+               Content="Add Workout"
+               Foreground="#D3D3D3"/>
+
+        <TextBlock x:Name="DatetxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Date:" 
+                   Margin="277,57,0,0"/>
+
+        <TextBox x:Name="DatetxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 Margin="324,57,0,0"/>
+
+        <TextBlock x:Name="TypetxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Type:"
+                   Margin="277,95,0,0"/>
+
+        <ComboBox x:Name="TypeComboBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121" 
+                 Margin="324,95,0,0"/>
+
+        <TextBlock x:Name="DurationtxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Duration:"
+                   Margin="256,134,0,0"/>
+
+        <TextBox x:Name="DurationtxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121" 
+                 Margin="324,134,0,0"/>
+
+        <TextBlock x:Name="CaloriesBurnedtxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Calories burned:"
+                   Margin="219,171,0,0"/>
+
+
+        <TextBox x:Name="CaloriesBurnedtxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 Margin="324,171,0,0"/>
+
+        <TextBlock x:Name="DistancetxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Text="Distance:"
+                   Margin="257,0,0,0"/>
+
+        <TextBox x:Name="DistancetxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Width="121"
+                 Margin="324,0,0,0"/>
+
+        <TextBlock x:Name="RepetitionstxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Repetitions:"
+                   Margin="249,245,0,0"/>
+
+
+        <TextBox x:Name="RepetitionstxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 Margin="324,245,0,0"/>
+
+
+        <TextBlock x:Name="NotestxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Notes:"
+                   Margin="274,326,0,0"/>
+
+
+        <TextBox x:Name="NotestxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 Height="50"
+                 Margin="324,326,0,0" />
+
+        <Button x:Name="Addbtn"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="63"
+                Content="Add" 
+                Margin="353,0,0,23"
+                Click="Addbtn_Click"/>
+
+
+
+    </Grid>
+</Window>

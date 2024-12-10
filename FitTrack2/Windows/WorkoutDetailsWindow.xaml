@@ -1,0 +1,129 @@
+﻿<Window x:Class="FitTrack2.Windows.WorkoutDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitTrack2.Windows"
+        mc:Ignorable="d"
+        Title="WorkoutDetailsWindow" Height="450" Width="800" Background="LightCoral">
+    <Grid>
+        <Label x:Name="WorkoutDetailsLabel"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               FontSize="20"
+               Content="Workout Details"
+               Foreground="#D3D3D3"/>
+
+        <TextBlock x:Name="DatetxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Date:" RenderTransformOrigin="0.433,-3.307" Margin="277,36,0,0"/>
+
+        <TextBox x:Name="DatetxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 IsReadOnly="True" Margin="324,37,0,0"/>
+
+        <TextBlock x:Name="TypetxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Type:"
+                   Margin="277,71,0,0"/>
+
+        <ComboBox x:Name="TypeComboBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 IsEnabled="False" 
+                 Margin="324,68,0,0"/>
+
+        <TextBlock x:Name="DurationtxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Duration:"
+                   Margin="257,105,0,0"/>
+
+        <TextBox x:Name="DurationtxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 IsReadOnly="True" 
+                 Margin="324,105,0,0"/>
+
+        <TextBlock x:Name="CaloriesBurnedtxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Calories burned:"
+                   Margin="219,137,0,0"/>
+
+
+        <TextBox x:Name="CaloriesBurnedtxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 IsReadOnly="True"
+                 Margin="324,137,0,0"/>
+
+
+        <TextBlock x:Name="DistancetxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Distance:"
+                   Margin="257,171,0,0"/>
+
+        <TextBox x:Name="DistancetxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 IsReadOnly="True"
+                 Margin="324,170,0,0"/>
+
+        <TextBlock x:Name="RepetitionstxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Repetitions:"
+                   Margin="250,204,0,0"/>
+
+
+        <TextBox x:Name="RepetitionstxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 IsReadOnly="True"
+                 Margin="324,204,0,0"/>
+
+        <TextBlock x:Name="NotestxtBlock"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Text="Notes:"
+                   Margin="270,274,0,0"/>
+
+
+        <TextBox x:Name="NotestxtBox"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="121"
+                 Height="50"
+                 IsReadOnly="True" 
+                 Margin="324,274,0,0" RenderTransformOrigin="0.521,0.481"/>
+
+        <Button x:Name="Editbtn"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="63"
+                Content="Edit" 
+                Margin="353,0,0,67"
+                Click="Editbtn_Click"/>
+
+        <Button x:Name="Savebtn"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="121"
+                Content="Save"
+                IsEnabled="True"
+                Margin="324,0,0,32"
+                Click="Savebtn_Click"/>
+
+    </Grid>
+</Window>
