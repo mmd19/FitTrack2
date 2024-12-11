@@ -22,6 +22,8 @@ namespace FitTrack2.Windows
     public partial class UserDetailsWindow : Window
     {
         public User UserSignedIn { get; set; }
+
+        //Konstruktor
         public UserDetailsWindow(User UserSignedIn)
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace FitTrack2.Windows
 
         }
 
+        //Metod för att kunna välja land i combobox
         private void Countries()
         {
             List<string> countries = new List<string>
@@ -44,11 +47,15 @@ namespace FitTrack2.Windows
             NewCountryComboBox.SelectedItem = UserSignedIn.Country;
         }
 
+        //Hanterar spara knappen
         private void Savebtn_Click(object sender, RoutedEventArgs e)
         {
             bool hasError = false;
+
+            //Kollar om användarnamnet är ifyllt
             if (!string.IsNullOrEmpty(NewUsernametxtBox.Text))
             {
+                //Kollar längd på användarnamnet
                 if (NewUsernametxtBox.Text.Length < 3)
                 {
                     MessageBox.Show("Username must be at least 3 letter", "Message");
@@ -56,6 +63,7 @@ namespace FitTrack2.Windows
                 }
                 else
                 {
+                    //Kollar om användarnamnet finns
                     foreach (User user in UserManager.Instance.RegisteredUsers)
                     {
                         if (user.Username.Equals(NewUsernametxtBox.Text))
@@ -66,19 +74,25 @@ namespace FitTrack2.Windows
                     }
                     if (!hasError)
                     {
+                        //Uppdaterar användarnamn
                         UserSignedIn.Username = NewUsernametxtBox.Text;
                     }
 
 
                 }
             }
+
+            //Kollar om lösenord är ifyllt
             if (!string.IsNullOrEmpty(NewPasswordtxtBox.Text))
             {
+                //Kollar om lösenord matchar
                 if (NewPasswordtxtBox.Text != ConfirmNewPasswordtxtBox.Text)
                 {
                     MessageBox.Show("Password do not match", "Message");
                     hasError = true;
                 }
+
+                //Kollar längd på lösenord
                 else if (NewPasswordtxtBox.Text.Length < 5)
                 {
                     MessageBox.Show("Password must be at least 5 character", "Message");
@@ -86,11 +100,12 @@ namespace FitTrack2.Windows
                 }
                 else
                 {
+                    //Uppdaterar lösenord
                     UserSignedIn.Password = NewPasswordtxtBox.Text;
                 }
             }
 
-          
+          // Kollar om fälten är tomma
             if (string.IsNullOrEmpty(NewUsernametxtBox.Text) &&
                 string.IsNullOrEmpty(NewPasswordtxtBox.Text) &&
                 string.IsNullOrEmpty(ConfirmNewPasswordtxtBox.Text) &&
@@ -101,10 +116,11 @@ namespace FitTrack2.Windows
                 hasError = true;
             }
 
+            //Uppdaterar land
             UserSignedIn.Country = NewCountryComboBox.Text;
          
 
-           
+           // Om inga fel hittas, sparas ändringarna och öppnar workoutwindow
            if (!hasError)
            {
                 MessageBox.Show("Saved", "Message");
@@ -115,8 +131,10 @@ namespace FitTrack2.Windows
 
         }
 
+        //Hanterar avbryt knappen
         private void Cancelbtn_Click(object sender, RoutedEventArgs e)
         {
+            //Stänger ner detailwindow och öppnar workoutwindow
             WorkoutsWindow workoutWindow = new WorkoutsWindow(UserSignedIn);
             workoutWindow.Show();
             this.Close();
