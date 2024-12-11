@@ -21,6 +21,8 @@ namespace FitTrack2.Windows
     public partial class WorkoutsWindow : Window
     {
         public User UserSignedIn { get; set; }
+        
+        //Konstruktor
         public WorkoutsWindow(User UserSignedIn)
         {
             InitializeComponent();
@@ -30,18 +32,20 @@ namespace FitTrack2.Windows
             Workouts();
         }
 
-
+        //Metod för användarnas träningspass i lista
         public void Workouts()
         {
             WorkoutList.ItemsSource = UserSignedIn.workout;
         }
 
+        // Metod för att uppdatera listan efter ändringar
         public void UpdateWorkoutList()
         {
             WorkoutList.ItemsSource = null;
             WorkoutList.ItemsSource = UserSignedIn.workout;
         }
 
+        //Hanterar användarens info, navigerar till userdetailwindow
         private void Userbtn_Click(object sender, RoutedEventArgs e)
         {
             UserDetailsWindow userDetailsWindow = new UserDetailsWindow(UserSignedIn);
@@ -49,6 +53,7 @@ namespace FitTrack2.Windows
             this.Close();
         }
 
+        //Hanterar logga ut knappen, navigerar tillbaka till mainwindow
         private void SignOutbtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -57,6 +62,7 @@ namespace FitTrack2.Windows
 
         }
 
+        //Hanterar lägga till träningspass knappen, navigerar till addworkoutwindow
         private void AddWorkoutbtn_Click(object sender, RoutedEventArgs e)
         {
             AddWorkoutWindow addWorkoutWindow = new AddWorkoutWindow(UserSignedIn.workout);
@@ -65,6 +71,7 @@ namespace FitTrack2.Windows
 
         }
 
+        //Hanterar träningspassdetaljer knappen, navigerar till workoutdetailwindow
         private void Detailsbtn_Click(object sender, RoutedEventArgs e)
         {
             if (WorkoutList.SelectedItem is Workout selectedWorkout)
@@ -76,19 +83,24 @@ namespace FitTrack2.Windows
             }
             else
             {
-                MessageBox.Show("Please select workout", "Message");
+                //Visar meddelandet om inget träningspass är valt
+                MessageBox.Show("Please select workout", "Message"); 
             }
 
         }
 
+        //Hanterar ta bort träningspass knappen
         private void RemoveWorkoutbtn_Click(object sender, RoutedEventArgs e)
         {
 
             if (WorkoutList.SelectedItem is Workout selectedWorkout)
             {
+                //Ifall användaren är admin
                 if (UserSignedIn is AdminUser)
                 {
                     User usertest = null;
+
+                    //Går igenom träningspass för att se vems
                     foreach (User user in UserManager.Instance.RegisteredUsers)
                     {
                         foreach (Workout workout in user.workout)
@@ -99,6 +111,8 @@ namespace FitTrack2.Windows
                             }
                         }
                     }
+
+                    //Om användare hittas, tas träningspasset bort
                     if (usertest != null)
                     {
                         usertest.workout.Remove(selectedWorkout);
@@ -109,6 +123,8 @@ namespace FitTrack2.Windows
                     UserSignedIn.workout.Remove(selectedWorkout);
 
                 }
+
+                //Uppdaterar listan
                 WorkoutList.ItemsSource = null;
                 WorkoutList.ItemsSource = UserSignedIn.workout;
             }
@@ -118,6 +134,7 @@ namespace FitTrack2.Windows
             }
         }
 
+        //Hanterar info knappen
         private void Infobtn_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Welcome! In this app you can add your own workouts! Enjoy :)", "Message");
