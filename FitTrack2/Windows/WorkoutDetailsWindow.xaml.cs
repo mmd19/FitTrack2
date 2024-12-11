@@ -20,9 +20,11 @@ namespace FitTrack2.Windows
     /// </summary>
     public partial class WorkoutDetailsWindow : Window
     {
+        //Egenskaper
         public User UserSignedIn { get; set; }
         public Workout selectedWorkout { get; set; }
 
+        //Konstruktor
         public WorkoutDetailsWindow(Workout selectedWorkout, User UserSignedIn)
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace FitTrack2.Windows
 
         }
 
+        //Metod för att kunna fylla i typ av träning
         public void Type()
         {
             List<string> type = new List<string>
@@ -45,7 +48,7 @@ namespace FitTrack2.Windows
             TypeComboBox.ItemsSource = type;
         }
 
-
+        //Metod för att kunna visa detaljer för de valda träningspasset
         private void DisplayDetails()
         {
             DatetxtBox.Text = selectedWorkout.Date.ToString("yyyy-MM-dd");
@@ -58,37 +61,34 @@ namespace FitTrack2.Windows
 
         }
 
-       
-
+        //Hanterar redigera knappen
         private void Editbtn_Click(object sender, RoutedEventArgs e)
-        {
-            
-          
+        {   
+            //Låser upp fält för att kunna redigera
             DatetxtBox.IsReadOnly = false;
-            TypeComboBox.IsEnabled = false;
+            TypeComboBox.IsEnabled = false; //Går inte att ändra
             DurationtxtBox.IsReadOnly = false;
             CaloriesBurnedtxtBox.IsReadOnly=false;
             NotestxtBox.IsReadOnly = false ;
 
-            string selectedType = TypeComboBox.Text;
+            string selectedType = TypeComboBox.Text; //Kollar vald typ
             
-
+            //Om typ är cardio
             if (selectedType == "Cardio")
             {
-                RepetitionstxtBox.IsReadOnly = true;
-                DistancetxtBox.IsReadOnly = false;
-            }
-            else if (selectedType == "Strength")
-            {
-                RepetitionstxtBox.IsReadOnly = false;
-                DistancetxtBox.IsReadOnly = true;
-            }
-            else
-            {
-                MessageBox.Show("Select type", "Message");
+                RepetitionstxtBox.IsReadOnly = true; //Går inte att ändra
+                DistancetxtBox.IsReadOnly = false; // Går att ändra
             }
 
-            Savebtn.IsEnabled = true;
+            //Om typ är strength
+            else if (selectedType == "Strength")
+            {
+                RepetitionstxtBox.IsReadOnly = false; //Går att ändra
+                DistancetxtBox.IsReadOnly = true; //Går inte att ändra
+            }
+
+
+            Savebtn.IsEnabled = true; //Aktiverar spara knappen
 
         }
 
@@ -96,7 +96,7 @@ namespace FitTrack2.Windows
         {
             try
             {
-
+                //Kollar om alla obligtoriska fält är ifyllda
             if (string.IsNullOrEmpty(DatetxtBox.Text) ||
                 string.IsNullOrEmpty(TypeComboBox.Text) ||
                 string.IsNullOrEmpty(DurationtxtBox.Text) ||
@@ -104,6 +104,8 @@ namespace FitTrack2.Windows
             {
                 MessageBox.Show("Please,fill in all field");
             }
+
+            //För att kunna uppdatera träningspasset
             DateTime date = DateTime.Parse(DatetxtBox.Text);
             string type = TypeComboBox.Text;
             TimeSpan duration = TimeSpan.Parse(DurationtxtBox.Text);
@@ -113,7 +115,7 @@ namespace FitTrack2.Windows
 
             if (type == "Cardio")
             {
-
+                    //För cardio
                 int distance = int.Parse(DistancetxtBox.Text);
                     selectedWorkout.Date = date;
                     selectedWorkout.Type = type;
@@ -129,6 +131,7 @@ namespace FitTrack2.Windows
             }
             else if (type == "Strength")
             {
+                    //För strength
                 int repetitions = int.Parse(RepetitionstxtBox.Text);
                     selectedWorkout.Date = date;
                     selectedWorkout.Type = type;
@@ -142,6 +145,8 @@ namespace FitTrack2.Windows
                     this.Close();
             }
             } catch {
+
+                //Hanterar fel vid felaktig inmatning
                 MessageBox.Show("Please,fill in all field valid input", "Message");
 
             }
