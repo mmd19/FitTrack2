@@ -38,7 +38,7 @@ namespace FitTrack2.Windows
 
         }
 
-        //Metod för att kunna fylla i typ av träning
+        //Metod för att sätta typer på combobox
         public void Type()
         {
             List<string> type = new List<string>

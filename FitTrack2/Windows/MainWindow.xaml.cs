@@ -41,7 +41,7 @@ namespace FitTrack2
                 //Kollar om användaren är admin
                 if (foundUser is AdminUser)
                 {
-                    //Admin hanterar alla träningspass
+                    //Lägger till träningspass i admins lista så admin kan hantera de
                     ((AdminUser) foundUser).ManageAllWorkouts();
                 }
 

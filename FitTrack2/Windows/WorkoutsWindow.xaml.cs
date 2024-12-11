@@ -98,7 +98,7 @@ namespace FitTrack2.Windows
                 //Ifall användaren är admin
                 if (UserSignedIn is AdminUser)
                 {
-                    User usertest = null;
+                    User founduser = null;
 
                     //Går igenom träningspass för att se vems
                     foreach (User user in UserManager.Instance.RegisteredUsers)
@@ -107,15 +107,15 @@ namespace FitTrack2.Windows
                         {
                             if (selectedWorkout.Equals(workout))
                             {
-                                usertest = user;
+                                founduser = user;
                             }
                         }
                     }
 
                     //Om användare hittas, tas träningspasset bort
-                    if (usertest != null)
+                    if (founduser != null)
                     {
-                        usertest.workout.Remove(selectedWorkout);
+                        founduser.workout.Remove(selectedWorkout);
                         UserSignedIn.workout.Remove(selectedWorkout);
                     }
                 } else

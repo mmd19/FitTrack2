@@ -86,7 +86,7 @@ namespace FitTrack2
 
             }
 
-            //Om allt är ifyllt korrekt och användarnamnet inte finns så läggs en ny användare till
+            //Lägger till användare
             else
             {
                 UserManager.Instance.RegisteredUsers.Add(new User(username, password, country, securityQuestion, securityAnswer));
